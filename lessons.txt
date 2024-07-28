@@ -1,0 +1,3 @@
+1st:
+Order of data(conversion rates) in the graph matters
+Hence, take care of that

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content="width=device-width,initial-scale=1.0">
+    <title>Arbitrage Detector</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <h1 class="text-2xl font-bold mb-4">Currency Arbitrage Detector</h1>
+        <button id="checkArbitrage" class="bg-blue-500 text-white px-4 py-2 rounded">Check for Arbitrage</button>
+        <div id="result" class="mt-4"></div>
+    </div>
+
+    <script>
+        document.getElementById('checkArbitrage').addEventListener('click',async()=>{
+            const response=await fetch('/api/arbitrage');
+            const data=await response.json();
+
+            const resultDiv=document.getElementById('result');
+
+            if(data.cycle)
+            {
+                resultDiv.innerHTML = `<p class="text-green-500">Arbitrage opportunity detected: ${data.cycle} with value: ${data.value}</p>`;
+            }
+            else
+            {
+                resultDiv.innerHTML = '<p class="text-red-500">No significant arbitrage detected.</p>';
+            }
+        });
+    </script>
+</body>
+
+
+</html>

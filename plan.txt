@@ -1,0 +1,14 @@
+1. Fetch exchange rates using an API.
+
+2. Convert exchange rates to graph representation with edge weights as negative logarithms of the rates.
+
+3. Use the Bellman-Ford algorithm to detect negative cycles:
+   - Initialize distances to all vertices as infinity except the start vertex.
+   - Relax all edges up to (V-1) times where V is the number of vertices.
+   - Check for negative cycles.
+
+4. If a negative cycle is detected, display the arbitrage opportunity.
+
+5. Build a website to display the information dynamically:
+   - Backend to fetch exchange rates and perform calculations.
+   - Frontend to display the results.
